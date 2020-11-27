@@ -15,10 +15,6 @@
 		50E1A94820377CB70090CE1A /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* Plugin.swift */; };
 		6ECDEF692570873700BD1ACD /* Pods_Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */; };
 		6ECDEF6A2570874F00BD1ACD /* Capacitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFFA52020D75100D50D53 /* Capacitor.framework */; };
-		6ED7E4B6257100AC00A8C0A2 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B42571004100A8C0A2 /* AMapFoundationKit.framework */; };
-		6ED7E4B7257100AC00A8C0A2 /* AMapFoundationKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B42571004100A8C0A2 /* AMapFoundationKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6ED7E4BA257100E000A8C0A2 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B9257100E000A8C0A2 /* AMapLocationKit.framework */; };
-		6ED7E4BB257100E000A8C0A2 /* AMapLocationKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B9257100E000A8C0A2 /* AMapLocationKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,21 +26,6 @@
 			remoteInfo = Plugin;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6ED7E4B8257100AC00A8C0A2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6ED7E4B7257100AC00A8C0A2 /* AMapFoundationKit.framework in Embed Frameworks */,
-				6ED7E4BB257100E000A8C0A2 /* AMapLocationKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,8 +53,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ECDEF6A2570874F00BD1ACD /* Capacitor.framework in Frameworks */,
-				6ED7E4BA257100E000A8C0A2 /* AMapLocationKit.framework in Frameworks */,
-				6ED7E4B6257100AC00A8C0A2 /* AMapFoundationKit.framework in Frameworks */,
 				6ECDEF692570873700BD1ACD /* Pods_Plugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,7 +155,6 @@
 				50ADFF84201F53D600D50D53 /* Frameworks */,
 				50ADFF85201F53D600D50D53 /* Headers */,
 				50ADFF86201F53D600D50D53 /* Resources */,
-				6ED7E4B8257100AC00A8C0A2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
