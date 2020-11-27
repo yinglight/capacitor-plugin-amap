@@ -15,6 +15,10 @@
 		50E1A94820377CB70090CE1A /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* Plugin.swift */; };
 		6ECDEF692570873700BD1ACD /* Pods_Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */; };
 		6ECDEF6A2570874F00BD1ACD /* Capacitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFFA52020D75100D50D53 /* Capacitor.framework */; };
+		6ED7E4B6257100AC00A8C0A2 /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B42571004100A8C0A2 /* AMapFoundationKit.framework */; };
+		6ED7E4B7257100AC00A8C0A2 /* AMapFoundationKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B42571004100A8C0A2 /* AMapFoundationKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6ED7E4BA257100E000A8C0A2 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B9257100E000A8C0A2 /* AMapLocationKit.framework */; };
+		6ED7E4BB257100E000A8C0A2 /* AMapLocationKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6ED7E4B9257100E000A8C0A2 /* AMapLocationKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +30,21 @@
 			remoteInfo = Plugin;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6ED7E4B8257100AC00A8C0A2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6ED7E4B7257100AC00A8C0A2 /* AMapFoundationKit.framework in Embed Frameworks */,
+				6ED7E4BB257100E000A8C0A2 /* AMapLocationKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,8 +58,8 @@
 		50ADFFA72020EE4F00D50D53 /* Plugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plugin.m; sourceTree = "<group>"; };
 		50E1A94720377CB70090CE1A /* Plugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		5E23F77F099397094342571A /* Pods-Plugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Plugin/Pods-Plugin.debug.xcconfig"; sourceTree = "<group>"; };
-		6EBF94372570E3EA008DC94B /* AMapFoundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AMapFoundation; path = Pods/AMapFoundation; sourceTree = "<group>"; };
-		6EBF94382570E3EA008DC94B /* AMapLocation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AMapLocation; path = Pods/AMapLocation; sourceTree = "<group>"; };
+		6ED7E4B42571004100A8C0A2 /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapFoundationKit.framework; path = Plugin/libs/AMapFoundationKit.framework; sourceTree = "<group>"; };
+		6ED7E4B9257100E000A8C0A2 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = Plugin/libs/AMapLocation/AMapLocationKit.framework; sourceTree = "<group>"; };
 		91781294A431A2A7CC6EB714 /* Pods-Plugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Plugin/Pods-Plugin.release.xcconfig"; sourceTree = "<group>"; };
 		96ED1B6440D6672E406C8D19 /* Pods-PluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F65BB2953ECE002E1EF3E424 /* Pods-PluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -53,6 +72,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ECDEF6A2570874F00BD1ACD /* Capacitor.framework in Frameworks */,
+				6ED7E4BA257100E000A8C0A2 /* AMapLocationKit.framework in Frameworks */,
+				6ED7E4B6257100AC00A8C0A2 /* AMapFoundationKit.framework in Frameworks */,
 				6ECDEF692570873700BD1ACD /* Pods_Plugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,8 +144,8 @@
 		A797B9EFA3DCEFEA1FBB66A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6EBF94372570E3EA008DC94B /* AMapFoundation */,
-				6EBF94382570E3EA008DC94B /* AMapLocation */,
+				6ED7E4B9257100E000A8C0A2 /* AMapLocationKit.framework */,
+				6ED7E4B42571004100A8C0A2 /* AMapFoundationKit.framework */,
 				50ADFFA52020D75100D50D53 /* Capacitor.framework */,
 				3B2A61DA5A1F2DD4F959604D /* Pods_Plugin.framework */,
 				F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */,
@@ -155,6 +176,7 @@
 				50ADFF84201F53D600D50D53 /* Frameworks */,
 				50ADFF85201F53D600D50D53 /* Headers */,
 				50ADFF86201F53D600D50D53 /* Resources */,
+				6ED7E4B8257100AC00A8C0A2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -459,6 +481,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Plugin/libs",
+					"$(PROJECT_DIR)/Plugin/libs/AMapLocation",
+				);
 				INFOPLIST_FILE = Plugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -484,6 +511,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Plugin/libs",
+					"$(PROJECT_DIR)/Plugin/libs/AMapLocation",
+				);
 				INFOPLIST_FILE = Plugin/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
