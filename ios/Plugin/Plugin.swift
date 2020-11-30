@@ -11,7 +11,7 @@ public class ValleyAmap: CAPPlugin {
     
     @objc override public func load() {
         // amap apikey
-        AMapServices.shared().apiKey = "";
+        AMapServices.shared().apiKey = "174f36faf8a9db6e72b2762314b8d6d1";
         locationManager = AMapLocationManager();
         locationManager!.delegate = self as? AMapLocationManagerDelegate;
     }
@@ -45,22 +45,7 @@ public class ValleyAmap: CAPPlugin {
                     NSLog("逆地理错误:{\(error.code) - \(error.localizedDescription)};")
                 }
                 else {
-                    if (reGeocode != nil && location != nil) {
-                        let mDict:NSMutableDictionary = NSMutableDictionary();
-                        mDict.setValue("定位成功", forKey: "status");
-                        mDict.setValue(reGeocode?.country, forKey: "country");
-                        mDict.setValue(reGeocode?.province, forKey: "province");
-                        mDict.setValue(reGeocode?.city, forKey: "city");
-                        mDict.setValue(reGeocode?.citycode, forKey: "citycode");
-                        mDict.setValue(reGeocode?.district, forKey: "district");
-                        mDict.setValue(reGeocode?.adcode, forKey: "adcode");
-                        mDict.setValue(reGeocode?.formattedAddress, forKey: "address");
-                        mDict.setValue(reGeocode?.poiName, forKey: "poi");
-                        mDict.setValue(location?.timestamp, forKey: "time");
-                        self?.pluginCall?.resolve(mDict as! PluginResultData);
-                    } else {
-                        self?.pluginCall?.reject("定位返回空对象", "500");
-                    }
+                    
                 }
             }
             
@@ -70,6 +55,32 @@ public class ValleyAmap: CAPPlugin {
             
             if let reGeocode = reGeocode {
                 NSLog("reGeocode:%@", reGeocode)
+            }
+            
+            if (reGeocode != nil && location != nil) {
+                let status = "定位成功";
+                let country: String = reGeocode?.country ?? "";
+                let province: String = reGeocode?.province ?? "";
+                let city: String = reGeocode?.city ?? "";
+                let citycode: String = reGeocode?.citycode ?? "";
+                let district: String = reGeocode?.district ?? "";
+                let adcode: String = reGeocode?.adcode ?? "";
+                let address: String = reGeocode?.formattedAddress ?? "";
+                let poi: String = reGeocode?.poiName ?? "";
+                let json: PluginResultData = [
+                    "status": status,
+                    "country": country,
+                    "province": province,
+                    "city": city,
+                    "citycode": citycode,
+                    "district": district,
+                    "adcode": adcode,
+                    "address": address,
+                    "poi": poi
+                ];
+                self?.pluginCall?.resolve(json);
+            } else {
+                self?.pluginCall?.reject("定位返回空对象", "500");
             }
         })
     }
@@ -97,18 +108,27 @@ public class ValleyAmap: CAPPlugin {
         let error = error! as NSError;
         if (error.code == 0) {
             if (reGeocode != nil && location != nil) {
-                let mDict:NSMutableDictionary = NSMutableDictionary();
-                mDict.setValue("定位成功", forKey: "status");
-                mDict.setValue(reGeocode?.country, forKey: "country");
-                mDict.setValue(reGeocode?.province, forKey: "province");
-                mDict.setValue(reGeocode?.city, forKey: "city");
-                mDict.setValue(reGeocode?.citycode, forKey: "citycode");
-                mDict.setValue(reGeocode?.district, forKey: "district");
-                mDict.setValue(reGeocode?.adcode, forKey: "adcode");
-                mDict.setValue(reGeocode?.formattedAddress, forKey: "address");
-                mDict.setValue(reGeocode?.poiName, forKey: "poi");
-                mDict.setValue(location.timestamp, forKey: "time");
-                notifyListeners("valleyAmapEvent",data: mDict as? [String : Any]);
+                let status = "定位成功";
+                let country: String = reGeocode?.country ?? "";
+                let province: String = reGeocode?.province ?? "";
+                let city: String = reGeocode?.city ?? "";
+                let citycode: String = reGeocode?.citycode ?? "";
+                let district: String = reGeocode?.district ?? "";
+                let adcode: String = reGeocode?.adcode ?? "";
+                let address: String = reGeocode?.formattedAddress ?? "";
+                let poi: String = reGeocode?.poiName ?? "";
+                let json: PluginResultData = [
+                    "status": status,
+                    "country": country,
+                    "province": province,
+                    "city": city,
+                    "citycode": citycode,
+                    "district": district,
+                    "adcode": adcode,
+                    "address": address,
+                    "poi": poi
+                ];
+                notifyListeners("valleyAmapEvent",data: json);
             } else {
                 pluginCall?.reject("定位返回空对象", "500");
             }
