@@ -56,31 +56,35 @@ public class ValleyAmap: CAPPlugin {
             if let reGeocode = reGeocode {
                 NSLog("reGeocode:%@", reGeocode)
             }
-            
-            if (reGeocode != nil && location != nil) {
-                let status = "定位成功";
-                let country: String = reGeocode?.country ?? "";
-                let province: String = reGeocode?.province ?? "";
-                let city: String = reGeocode?.city ?? "";
-                let citycode: String = reGeocode?.citycode ?? "";
-                let district: String = reGeocode?.district ?? "";
-                let adcode: String = reGeocode?.adcode ?? "";
-                let address: String = reGeocode?.formattedAddress ?? "";
-                let poi: String = reGeocode?.poiName ?? "";
-                let json: PluginResultData = [
-                    "status": status,
-                    "country": country,
-                    "province": province,
-                    "city": city,
-                    "citycode": citycode,
-                    "district": district,
-                    "adcode": adcode,
-                    "address": address,
-                    "poi": poi
-                ];
-                self?.pluginCall?.resolve(json);
+            if (error == nil) {
+                if (reGeocode != nil && location != nil) {
+                    let status = "定位成功";
+                    let country: String = reGeocode?.country ?? "";
+                    let province: String = reGeocode?.province ?? "";
+                    let city: String = reGeocode?.city ?? "";
+                    let citycode: String = reGeocode?.citycode ?? "";
+                    let district: String = reGeocode?.district ?? "";
+                    let adcode: String = reGeocode?.adcode ?? "";
+                    let address: String = reGeocode?.formattedAddress ?? "";
+                    let poi: String = reGeocode?.poiName ?? "";
+                    let json: PluginResultData = [
+                        "status": status,
+                        "country": country,
+                        "province": province,
+                        "city": city,
+                        "citycode": citycode,
+                        "district": district,
+                        "adcode": adcode,
+                        "address": address,
+                        "poi": poi
+                    ];
+                    self?.pluginCall?.resolve(json);
+                } else {
+                    self?.pluginCall?.reject("定位返回空对象", "500");
+                }
             } else {
-                self?.pluginCall?.reject("定位返回空对象", "500");
+                let errors = error! as NSError;
+                self?.pluginCall?.reject(errors.localizedDescription, String(errors.code));
             }
         })
     }
@@ -106,7 +110,7 @@ public class ValleyAmap: CAPPlugin {
             NSLog("reGeocode:%@", reGeocode);
         }
         let error = error! as NSError;
-        if (error.code == 0) {
+        if (error == nil) {
             if (reGeocode != nil && location != nil) {
                 let status = "定位成功";
                 let country: String = reGeocode?.country ?? "";
