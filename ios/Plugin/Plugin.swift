@@ -4,7 +4,7 @@ import AMapFoundationKit
 import AMapLocationKit
 
 @objc(ValleyAmap)
-public class ValleyAmap: CAPPlugin {
+public class ValleyAmap: CAPPlugin, AMapLocationManagerDelegate {
     var locationManager: AMapLocationManager? = nil;
     var isSingle: Bool = false;
     var pluginCall: CAPPluginCall? = nil;
@@ -13,7 +13,7 @@ public class ValleyAmap: CAPPlugin {
         // amap apikey
         AMapServices.shared().apiKey = "174f36faf8a9db6e72b2762314b8d6d1";
         locationManager = AMapLocationManager();
-        locationManager!.delegate = self as? AMapLocationManagerDelegate;
+        locationManager!.delegate = self;
     }
     
     //MARK: - 单次定位
@@ -56,7 +56,7 @@ public class ValleyAmap: CAPPlugin {
             if let reGeocode = reGeocode {
                 NSLog("reGeocode:%@", reGeocode)
             }
-            if (error == nil) {
+            if error == nil {
                 if (reGeocode != nil && location != nil) {
                     let status = "定位成功";
                     let country: String = reGeocode?.country ?? "";
@@ -104,40 +104,35 @@ public class ValleyAmap: CAPPlugin {
     }
     
     // serailLocation callback
-    func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode?, didFailWithError error: Error?) {
+    public func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode?) {
         NSLog("location:{lat:\(location.coordinate.latitude); lon:\(location.coordinate.longitude); accuracy:\(location.horizontalAccuracy)};");
         if let reGeocode = reGeocode {
             NSLog("reGeocode:%@", reGeocode);
         }
-        let error = error! as NSError;
-        if (error == nil) {
-            if (reGeocode != nil && location != nil) {
-                let status = "定位成功";
-                let country: String = reGeocode?.country ?? "";
-                let province: String = reGeocode?.province ?? "";
-                let city: String = reGeocode?.city ?? "";
-                let citycode: String = reGeocode?.citycode ?? "";
-                let district: String = reGeocode?.district ?? "";
-                let adcode: String = reGeocode?.adcode ?? "";
-                let address: String = reGeocode?.formattedAddress ?? "";
-                let poi: String = reGeocode?.poiName ?? "";
-                let json: PluginResultData = [
-                    "status": status,
-                    "country": country,
-                    "province": province,
-                    "city": city,
-                    "citycode": citycode,
-                    "district": district,
-                    "adcode": adcode,
-                    "address": address,
-                    "poi": poi
-                ];
-                notifyListeners("valleyAmapEvent",data: json);
-            } else {
-                pluginCall?.reject("定位返回空对象", "500");
-            }
+        if (reGeocode != nil && location != nil) {
+            let status = "定位成功";
+            let country: String = reGeocode?.country ?? "";
+            let province: String = reGeocode?.province ?? "";
+            let city: String = reGeocode?.city ?? "";
+            let citycode: String = reGeocode?.citycode ?? "";
+            let district: String = reGeocode?.district ?? "";
+            let adcode: String = reGeocode?.adcode ?? "";
+            let address: String = reGeocode?.formattedAddress ?? "";
+            let poi: String = reGeocode?.poiName ?? "";
+            let json: PluginResultData = [
+                "status": status,
+                "country": country,
+                "province": province,
+                "city": city,
+                "citycode": citycode,
+                "district": district,
+                "adcode": adcode,
+                "address": address,
+                "poi": poi
+            ];
+            notifyListeners("valleyAmapEvent",data: json);
         } else {
-            pluginCall?.reject(error.localizedDescription, String(error.code));
+            pluginCall?.reject("定位返回空对象", "500");
         }
         
     }
