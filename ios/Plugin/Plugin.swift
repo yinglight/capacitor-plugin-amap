@@ -11,7 +11,7 @@ public class ValleyAmap: CAPPlugin, AMapLocationManagerDelegate {
     
     @objc override public func load() {
         // amap apikey
-        AMapServices.shared().apiKey = "174f36faf8a9db6e72b2762314b8d6d1";
+        AMapServices.shared().apiKey = "";
         locationManager = AMapLocationManager();
         locationManager!.delegate = self;
     }
