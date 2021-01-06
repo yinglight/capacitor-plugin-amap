@@ -9,12 +9,12 @@ export class ValleyAmapWeb extends WebPlugin implements ValleyAmapPlugin {
     });
   }
 
-  async singleLocation(): Promise<any> {
+  async singleLocation() {
     console.log('SingleLocation');
     return '';
   }
 
-  async continuousLocation(options: { isStart: boolean; }): Promise<any> {
+  async continuousLocation(options: { isStart: boolean; }) {
     console.log('ContinuousLocation');
     return options;
   }
